@@ -10,7 +10,7 @@ For the following requirments:
 2.The client should be able to make both sync and async calls to the server
 
  At client side, simply  a precompile option is set as
- #define ASYNCHRONOUSPIPE  //asnychronous or not
+ #define ASYNCHRONOUSPIPE  
 to control the communicating type.
   
 3.The client should be able to send trivial data (strings, numbers) to the server
@@ -20,11 +20,13 @@ We can send/receive any bytes between server and client
 4.The client should be able to create objects on the server (based on req-7 below), retrieve them, their attributes 
 and call methods on them
 
-Simply, the client can send command “1” to retrieve available classes with attributes and methods definition. Also,
+Simply, the client can send a command to retrieve available classes with attributes and methods definition. Also,
 clients can instantiate many objects for certain class and store them at server side. These objects are identified 
-by unique ID. With one request, the client can commit a batch of calls to server, create or update objects, 
-invoke methods as well as retrieve the execution result. Saved objects can be used to execute their methods
-which may update themselves. Also, saved objects can be used as parameters to construct other objects. 
+by a unique ID. With a request, the client can execute a batch of calls at server, to create or update objects, 
+invoke methods as well as retrieve the execution result. 
+
+Objects saved at the server side can be used to execute their methods
+ or as parameters for other objects' invocation, such as constructors of other objects. After a sequence of remote calls, the updated objects will be saved or refreshed at the server storage.
   
 5.The server should be able to receive both sync/async connection requests from clients
 
@@ -41,5 +43,5 @@ A config file named ClassListConfig.dat at server side is used to list the avail
 8.The server should be able to store the custom objects created by the client for the custom class created in req-7
 
 client can instantiate many objects for a class and store them at server side. These objects are identified by unique ID. 
-  For every client there is a subdirectory to store their object files named class+objectID. Clients can add and update 
+  For every client there is a subdirectory to store their objects in files named className+objectID. Clients can add and update 
   their remote objects.
