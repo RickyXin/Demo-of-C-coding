@@ -9,10 +9,8 @@ For the following requirments:
   
 2.The client should be able to make both sync and async calls to the server
 
- At client side, simply  a precompile option is set as
- #define ASYNCHRONOUSPIPE  
-to control the communicating type.
-  
+ If the client starts with a parameter: 1, it will connect the server in asynchronous way, otherwise the communication is synchronous.
+ 
 3.The client should be able to send trivial data (strings, numbers) to the server
 
 We can send/receive any bytes between server and client
